@@ -11,6 +11,7 @@ import static io.qameta.allure.Allure.step;
 public class MailingTest extends TestBase {
 
     MainPage mainPage = new MainPage();
+    String receiverEmail = ConfigHelper.getWebReceiverLogin()+"@mail.ru";
 
     @Test
     @DisplayName("Send test message")
@@ -24,7 +25,7 @@ public class MailingTest extends TestBase {
             });
 
         step("Send test message", () -> {
-            mainPage. sendTestMessage("receiver-test-qa@mail.ru", "Тест", "Тест отправки");
+            mainPage. sendTestMessage(receiverEmail, "Тест", "Тест отправки");
         });
     }
 

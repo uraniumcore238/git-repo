@@ -21,7 +21,8 @@ public class MainPage {
         inputThemeField = $("input[name='Subject']"),
         inputMessageField = $("div[contenteditable ='true']"),
         themeField = $x("//span/span[text()='Тест']"),
-        letterBody = $(".letter__body");
+        letterBody = $(".letter__body"),
+        messageSentReport = $x("//a[text()='Письмо отправлено']");
 
     @Step("Open main page")
     public void openMainPage() {
@@ -54,6 +55,8 @@ public class MainPage {
         });
 
         step("Send the message", () -> inputMessageField.sendKeys(Keys.CONTROL, Keys.ENTER));
+
+        step("Confirm that message has been sent", () -> messageSentReport.shouldBe(visible));
     }
 
     @Step("Check test message")
